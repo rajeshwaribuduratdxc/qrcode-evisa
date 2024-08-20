@@ -1,0 +1,10 @@
+<div style="float: right;"> <img src="../assets/images/vfs-global-logo.png" alt="logo" /></div>
+<button class="scanbuttonCSS" (click)="scanQRcode()" >Scan QR Code</button>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+<div *ngIf = "showScanner">
+<ngx-scanner-qrcode style=" left: 20%;width: 50%;height: 50%;" #action="scanner" [config]="config" (event)="onEvent($event, action)"></ngx-scanner-qrcode>
+<button class="btn" [class.btn-info]="!action.isStart" [class.btn-warning]="action.isStart" [disabled]="action.isLoading" (click)="handle(action, action.isStart ? 'stop' : 'start')">
+    <img [src]="action.isStart ? 'https://id1945.github.io/images/svg/camera-off.svg' : 'https://id1945.github.io/images/svg/camera-on.svg'" width="30px"/>
+  </button>
+</div>
